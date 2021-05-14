@@ -1,0 +1,19 @@
+.gray {
+  background: gray;
+  height: 2000px;
+  margin-top: 600px;
+  margin-bottom: 1600px;
+}
+
+.gray h1 {
+  color: white;
+  float: left;
+  padding: 30px;
+}
+
+img {
+  position: sticky;
+  top: 100px;
+
+  float: right;
+}
