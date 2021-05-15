@@ -1,0 +1,19 @@
+#alert-box {
+  background: skyblue;
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 500px;
+  display: none;
+}
+
+#box {
+  background-color: #eee;
+  width: 50%;
+  padding: 20px;
+  display: none;
+}
+
+.yellow-bg {
+  background-color: yellow;
+}

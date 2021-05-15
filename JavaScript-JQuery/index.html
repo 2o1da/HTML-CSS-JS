@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+  <body>
+    <h3 class="test">Help..</h3>
+    <div id="alert-box">
+      <h1>Help!</h1>
+      <button onclick="frame('none')">Cancel</button>
+    </div>
+
+    <div id="box">
+      <h1>Hello</h1>
+      <button id="closed">X</button>
+    </div>
+
+    <button onclick="frame('block')">Is there anybody?</button>
+
+    <div>
+      <button onclick="alarm('아이디를 입력하지 않으셨습니다.','block')">button1</button>
+      <button onclick="alarm('비밀번호를 입력하지 않으셨습니다.','block')">button2</button>
+    </div>
+
+    <script>
+      function frame(p) {
+        document.getElementById("alert-box").style.display = p;
+      }
+
+      function alarm(p, p2) {
+        document.getElementsByTagName("h1")[1].innerHTML = p;
+        document.getElementById("box").style.display = p2;
+        document.getElementById("closed").style.display = p2;
+      }
+
+      document.getElementById("closed").addEventListener("mouseover", function () {
+        document.getElementById("box").style.display = "none";
+      });
+    </script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    >
+      $(".test").addClass("yellow-bg");
+    </script>
+  </body>
+</html>
