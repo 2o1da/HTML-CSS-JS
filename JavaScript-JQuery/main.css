@@ -17,3 +17,89 @@
 .yellow-bg {
   background-color: yellow;
 }
+
+.black-bg {
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: block;
+  transition: transform 0.5s;
+  transform: translateY(-1000px);
+}
+
+.sd {
+  transform: translateY(0px);
+}
+
+.white-bg {
+  background: white;
+  width: 80%;
+  margin: 100px auto;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.main-bg {
+  color: white;
+  background-size: cover;
+  background-image: url(https://cdn.pixabay.com/photo/2020/06/11/14/06/hamburg-5286863_1280.jpg);
+  border-radius: 0px;
+}
+
+.nav-menu {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.nav-sub {
+  display: none;
+}
+
+#btn {
+  padding: 10px;
+}
+
+.form-control {
+  margin-top: 30px;
+}
+
+.btn {
+  margin-top: 30px;
+  margin-right: 10px;
+}
+
+#email-alert {
+  display: none;
+}
+
+#pw-alert {
+  display: none;
+}
+
+.slide-container {
+  width: 300vw;
+  transition: transform 0.5s;
+}
+
+.slide-box {
+  width: 100vw;
+  float: left;
+}
+
+.slide-box img {
+  width: 100%;
+}
+
+.slide-next {
+  position: absolute;
+  top:40%;
+  right: 0;
+}
+
+.slide-prev{
+  position: absolute;
+  top:40%;
+  left: 0;
+}
