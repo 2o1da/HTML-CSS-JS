@@ -4,7 +4,6 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <title>Bootstrap 101 Template</title>
 
@@ -17,10 +16,11 @@
 </head>
 
 <body>
+
+  </div>
   <div class="black-bg">
     <div class="white-bg">
       <p>Log in</p>
-
       <form action="test.php">
         <div class="form-container">
           <input id="email" type="email" class="form-control" placeholder="Email">
@@ -36,7 +36,7 @@
   </div>
 
   <div class="nav-menu sd">
-    <h3>Logo</h3>
+    <h3 class="large-logo" style="margin:0">Logo</h3>
     <a id="btn" href='#'>Menu</a>
   </div>
 
@@ -54,8 +54,8 @@
       featured content or information.</p>
     <hr class="my-5">
     <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-    <a id="login" class="btn btn-primary btn-lg" href="#" role="button">Log In</a>
-    <a id="show" class="btn btn-danger btn-lg" href="#" role="button">Show Menu</a>
+    <a id="login" class="btn btn-primary btn-lg" href="#" role="button">로그인</a>
+    <a id="show" class="btn btn-danger btn-lg" href="#" role="button">메뉴</a>
   </div>
 
   <div style="overflow: hidden; position:relative">
@@ -72,6 +72,71 @@
   <button class="slide-1">1</button>
   <button class="slide-2">2</button>
   <button class="slide-3">3</button>
+
+  <style>
+    ul.list {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      border-bottom: 1px solid #ccc;
+    }
+
+    ul.list::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+    .tab-button {
+      display: block;
+      padding: 10px 20px 10px 20px;
+      float: left;
+      margin-right: -1px;
+      margin-bottom: -1px;
+      color: grey;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .active {
+      border-top: 2px solid orange;
+      border-right: 1px solid #ccc;
+      border-bottom: 1px solid white;
+      border-left: 1px solid #ccc;
+      color: black;
+      margin-top: -2px;
+      font-weight: 500;
+    }
+
+    .tab-content {
+      display: none;
+      padding: 10px;
+      margin-top: 10px;
+    }
+
+    .show {
+      display: block;
+    }
+  </style>
+
+
+  <div class="container mt-5">
+    <ul class="list">
+      <li class="tab-button" data-idx="0">Products</li>
+      <li class="tab-button active" data-idx="1">Information</li>
+      <li class="tab-button" data-idx="2">Shipping</li>
+    </ul>
+
+    <div class="tab-content">
+      <p>상품설명입니다. Product</p>
+    </div>
+    <div class="tab-content show">
+      <p>상품정보입니다. Info</p>
+    </div>
+    <div class="tab-content">
+      <p>배송정보입니다. Shipping</p>
+    </div>
+  </div>
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -137,20 +202,38 @@
     $('.slide-next').click(function () {
       $('.slide-container').css('transform', 'translateX(-' + now + '00vw)');
       now++;
-      console.log(now);
     })
 
     $('.slide-prev').click(function () {
-      console.log(now);
       $('.slide-container').css('transform', 'translateX(-' + (now - 2) + '00vw)');
       if (now > 1) {
         now--;
       }
     })
+
+    $(window).on('scroll', function () {
+      if ($(window).scrollTop() >= 100) {
+        //$(".nav-menu").css('background-color', 'skyblue');
+        $('.nav-menu').addClass('nav-black');
+        $('.nav-menu h3').addClass('small-logo');
+      } else { //$(".nav-menu").css('background-color', 'skyblue');
+        $('.nav-menu').removeClass('nav-black');
+        $('.nav-menu h3').removeClass('small-logo');
+      }
+    })
+
+    $('.black-bg').click(function (event) {
+      // event.target; // 지금 실제 클릭한 요소
+      // event.currentTarget; // 지금 이벤트리스너가 있는 곳, $(this);
+      //if (event.target == event.currentTarget)
+      if (event.target == this)
+        $('.black-bg').hide();
+    })
   </script>
 
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="js/bootstrap.min.js"></script>
+  <script src="./index.js"></script>
 </body>
 
 </html>
