@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <div class="card-group container">
+    </div>
+
+    <div class="container my-3">
+        <button id="sort-price" class="btn btn-danger">가격순 정렬</button>
+        <button id="sort-name" class="btn btn-danger">이름순 정렬</button>
+        <button id="filter-price" class="btn btn-danger">50,000원 이하</button>
+        <button id="back" class="btn btn-danger">원래대로</button>
+    </div>
+    <form id="form-price" class="p-3">
+        <input id="input-price" type="text" placeholder="값을 입력하세요.">
+    </form>
+
+    <script>
+        var products = [{
+                id: 0,
+                price: 70000,
+                title: 'Blossom Dress'
+            },
+            {
+                id: 1,
+                price: 50000,
+                title: 'Springfield Shirt'
+            },
+            {
+                id: 2,
+                price: 60000,
+                title: 'Black Monastery'
+            }
+        ]
+
+        let products2 = [...products];
+
+        document.querySelector("#sort-price").addEventListener("click", function () {
+            products.sort(function (a, b) {
+                return a.price - b.price;
+            });
+
+            products.forEach(function (e) {
+                $('.card-body>h5').eq(products.indexOf(e)).html(e.title);
+                //document.querySelectorAll(".card-body>h5")[products.indexOf(e)].innerHTML = e.title;
+                document.querySelectorAll(".card-body>p")[products.indexOf(e)].innerHTML =
+                    `가격 : ${e.price}`;
+            });
+        })
+
+        document.querySelector("#sort-name").addEventListener("click", function () {
+
+            products.sort(function (a, b) {
+                let result = a.title > b.title;
+                if (result == true) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            });
+
+            products.forEach(function (e) {
+                $('.card-body>h5').eq(products.indexOf(e)).html(e.title);
+                //document.querySelectorAll(".card-body>h5")[products.indexOf(e)].innerHTML = e.title;
+                document.querySelectorAll(".card-body>p")[products.indexOf(e)].innerHTML =
+                    `가격 : ${e.price}`;
+            });
+        })
+
+        document.querySelector("#filter-price").addEventListener("click", function () {
+            products.forEach(function (e) {
+                $('.card').eq(products.indexOf(e)).html("");
+            })
+            let a = products.filter(function (e) {
+                return e.price <= 50000;
+            })
+
+            a.forEach(function (e) {
+                let temp = `
+                        <img src="https://via.placeholder.com/600">
+                        <div class="card-body">
+                            <h5>${e.title}</h5>
+                            <p>가격 : ${e.price}</p>
+                            <button class="btn btn-danger">주문하기</button>
+                        </div>`;
+                $('.card').eq(a.indexOf(e)).html(temp);
+            })
+        });
+
+        document.querySelector("#back").addEventListener("click", function () {
+            $('.card-group').html("");
+            products.forEach(function (e) {
+                let temp = `
+                    <div class="card">
+                        <img src="https://via.placeholder.com/600">
+                        <div class="card-body">
+                            <h5>${e.title}</h5>
+                            <p>가격 : ${e.price}</p>
+                            <button class="btn btn-danger">주문하기</button>
+                        </div>
+                    </div>`;
+
+                $('.card-group').append(temp);
+            })
+        })
+
+        document.querySelector('#input-price').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                console.log("SEX");
+
+                products.forEach(function (e) {
+                    $('.card').eq(products.indexOf(e)).html("");
+                });
+
+                let a = products.filter(function (e) {
+                    return e.price <= $('#price').val();
+                });
+
+                a.forEach(function (e) {
+                    let temp = ` <img
+            src="https://via.placeholder.com/600">
+            <div class="card-body">
+                <h5>${e.title}</h5>
+                <p>가격 : ${e.price}</p>
+                <button class="btn btn-danger">주문하기</button>
+            </div>`;
+                    $('.card').eq(a.indexOf(e)).html(temp);
+                })
+            }
+        })
+    </script>
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
+    </script>
+    <script src="./index.js"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>

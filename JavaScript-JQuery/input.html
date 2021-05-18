@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 101 Template2</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="./main.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+</head>
+
+<body>
+    <form class="container my-5">
+        <div class="form-group">
+            <p>상품 선택</p>
+            <select name="name?" id="option1" class="form-control mt-0">
+                <option>모자</option>
+                <option>셔츠</option>
+                <option>바지</option>
+            </select>
+
+            <div class="size-select mt-5">
+                <p>사이즈 선택</p>
+                <select name="name?" id="option2" class="form-control mt-0">
+                </select>
+                <select name="name?" id="option3" class="form-control mt-0">
+                </select>
+                <select name="name?" id="option4" class="form-control mt-0">
+                </select>
+            </div>
+        </div>
+    </form>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $('#option1').on('change', function () {
+            if ($('#option1').val() == '셔츠') {
+                $('.size-select').show();
+                $('#option2').show();
+
+                let size = [85, 90, 95, 100, 105, 110, 115];
+                for (let i = 0; i < size.length; ++i) {
+                    let temp = `<option>${size[i]}</option>`;
+                    $('#option2').append(temp);
+                }
+
+                size.forEach(function (e) {
+                    let temp = `<option>${e}</option>`;
+                    $('#option2').append(temp);
+                })
+
+                $('#option3').hide();
+                $('#option4').hide();
+            } else if ($('#option1').val() == '바지') {
+                $('.size-select').show();
+                $('#option3').show();
+
+                let temp = `<option>29</option>
+                    <option>31</option>
+                    <option>33</option>`;
+                $('#option3').append(temp);
+                $('#option2').hide();
+                $('#option4').hide();
+            } else if ($('#option1').val() == '모자') {
+                $('.size-select').show();
+                $('#option4').show();
+
+                let temp = "<option>S</option><option>M</option><option>L</option>"
+                $('#option4').append(temp);
+                $('#option2').hide();
+                $('#option3').hide();
+
+            } else {
+                $('.size-select').hide();
+                $('#option2').hide();
+                $('#option3').hide();
+                $('#option4').hide();
+            }
+
+        });
+    </script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>
