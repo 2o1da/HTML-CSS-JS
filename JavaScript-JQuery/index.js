@@ -39,3 +39,9 @@ function 이름찾기(e) {
         }
     })
 }
+
+window.addEventListener("scroll", function () {
+    let height = document.documentElement.scrollTop;
+    let y = (-1 / 700) * height + 29 / 14;
+    document.querySelectorAll('.card-box')[0].style.opacity = y;
+})

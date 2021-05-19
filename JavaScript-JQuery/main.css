@@ -141,3 +141,17 @@
 #option4 {
     display: none;
 }
+
+.card-box {
+    position: sticky;
+    top: 100px;
+    margin-top: 200px;
+    transition: all 0.2s;
+
+}
+
+.card-box>img {
+    display: block;
+    margin: auto;
+    max-width: 80%;
+}
